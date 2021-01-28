@@ -124,3 +124,23 @@ nested_comment.bookmarks.create! user: user
 ```
 
 And similarly you can `update` and `destroy` the records accordingly.
+
+## Authors
+
+### Abeid Ahmed
+
+- GitHub: [@abeidahmed](https://github.com/abeidahmed)
+- Twitter: [@iamhawaabi](https://twitter.com/iamhawaabi)
+- LinkedIn: [Abeid Ahmed](https://www.linkedin.com/in/abeid-ahmed-b21882172/)
+
+## Contributing
+
+- Fork the project
+- Create your feature branch `git checkout -b awesome-feature`
+- Commit your changes `git commit -m 'Awesome feature'`
+- Push it `git push -u origin awesome-feature`
+- Open a pull request using this branch
+
+## License
+
+[MIT](https://github.com/abeidahmed/tic-tac-toe/blob/development/LICENSE) licensed software.
