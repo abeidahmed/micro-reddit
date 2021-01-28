@@ -71,6 +71,10 @@ post.votes_count
 # 1
 
 post.downvote(1) # Here 1 is the `id` of the vote that we created earlier. Normally, we could have used the controller to fetch the params and pass in the argument.
+
+post.votes_count
+
+# 0
 ```
 
 Similarly, lets vote on the comment
@@ -78,10 +82,20 @@ Similarly, lets vote on the comment
 ```ruby
 comment.upvote
 
+comment.votes_count
+
+# 1
+
 # and
 
 comment.downvote(2) # The `id` may change here. Please be cautious.
+
+comment.votes_count
+
+# 0
 ```
+
+> The count feature is handled by the [`counter_cache`](https://api.rubyonrails.org/classes/ActiveRecord/CounterCache/ClassMethods.html) column.
 
 Similarly, lets vote on a nested comment
 
