@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_084649) do
+ActiveRecord::Schema.define(version: 2021_01_28_090105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,18 @@ ActiveRecord::Schema.define(version: 2021_01_28_084649) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer "vote", default: 0, null: false
+    t.string "votable_type", null: false
+    t.bigint "votable_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable"
+  end
+
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "votes", "users"
 end
