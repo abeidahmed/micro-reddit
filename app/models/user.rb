@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :posts
+
   before_validation :normalize_email_address
 
   has_secure_password
