@@ -13,12 +13,12 @@ A simple rails console app based on the [reddit](https://reddit.com) platform.
 
 ## Features
 
-- Users can register themselves.
-- Create a post.
-- Comment on a post.
-- Comment on a comment.
-- Reddit style upvotes and downvotes on both posts and comments.
-- Bookmark posts and comments.
+- Users can register themselves
+- Create a post
+- Comment on a post
+- Comment on a comment
+- Reddit style upvotes and downvotes on both posts and comments
+- Bookmark posts and comments
 
 ## Usage
 
@@ -27,9 +27,9 @@ The first thing that you need to do is to fire up a `rails console`.
 Let's get started by creating a `user`.
 
 ```ruby
-user = User.create! full_name: 'John Doe', email_address: 'johnny@ex.com', password: 'secretpassword'
-
+user = User.create!(full_name: 'John Doe', email_address: 'johnny@ex.com', password: 'secretpassword')
 => #<User id: 1, full_name: "John Doe", email_address: "johnny@ex.com", password_digest: [FILTERED], ...etc>
+
 # Try quering `user.password`, you'll probably get `nil`. This is because the password's are hashed before storing.
 ```
 
@@ -38,9 +38,7 @@ user = User.create! full_name: 'John Doe', email_address: 'johnny@ex.com', passw
 Now, let's create a post. We will reference the above created `user` when creating a `post`.
 
 ```ruby
-post = user.posts.build(title: 'My first blog post', content: 'Hello world, an awesome day indeed')
-post.save
-
+post = user.posts.create!(title: 'My first blog post', content: 'Hello world, an awesome day indeed')
 => #<Post id: 1, title: "My first blog post", content: "Hello world, an awesome day indeed", votes_count: 0, user_id: 1, .... etc>
 ```
 
@@ -49,10 +47,8 @@ post.save
 Now, let's comment on the post that we created above. Because that's what reddit does right?
 
 ```ruby
-comment = post.comments.build(content: 'Wow, an awesome post', user: user)
-comment.save
-
-#<Comment id: 1, content: "Wow, an awesome post", votes_count: 0, commentable_type: "Post", commentable_id: 1, user_id: 1, ... etc>
+comment = post.comments.create!(content: 'Wow, an awesome post', user: user)
+=> #<Comment id: 1, content: "Wow, an awesome post", votes_count: 0, commentable_type: "Post", commentable_id: 1, user_id: 1, ... etc>
 ```
 
 > Comment is created and the `post_id` and the `user_id` is populated automatically.
@@ -60,17 +56,15 @@ comment.save
 You want to comment on a comment? No problem
 
 ```ruby
-nested_comment = comment.comments.build(content: 'I am a nested comment', user: user)
-nested_comment.save
-
-#<Comment id: 2, content: "I am a nested comment", votes_count: 0, commentable_type: "Comment", commentable_id: 1, user_id: 1, ...etc>
+nested_comment = comment.comments.create!(content: 'I am a nested comment', user: user)
+=> #<Comment id: 2, content: "I am a nested comment", votes_count: 0, commentable_type: "Comment", commentable_id: 1, user_id: 1, ...etc>
 ```
 
 Phew, we did a lot. But we still have more to go. Let's try the upvote and the downvote feature.
 
 ```ruby
 post.upvote
-#<Vote id: 1, votable_type: "Post", votable_id: 1, ...etc>
+=> #<Vote id: 1, votable_type: "Post", votable_id: 1, ...etc>
 
 # This creates a `vote` instance on the `post`.
 
@@ -88,7 +82,7 @@ Similarly, lets vote on the comment
 
 ```ruby
 comment.upvote
-#<Vote id: 2, votable_type: "Comment", votable_id: 1, ...etc>
+=> #<Vote id: 2, votable_type: "Comment", votable_id: 1, ...etc>
 
 comment.votes_count
 # 1
@@ -96,7 +90,7 @@ comment.votes_count
 # and
 
 comment.downvote(2) # The `id` may change here. Please be cautious.
-#<Vote id: 2, votable_type: "Comment", votable_id: 1, ...etc>
+=> #<Vote id: 2, votable_type: "Comment", votable_id: 1, ...etc>
 
 comment.votes_count
 # 0
@@ -108,7 +102,7 @@ Similarly, lets vote on a nested comment
 
 ```ruby
 nested_comment.upvote
-#<Vote id: 3, votable_type: "Comment", votable_id: 2, ...etc>
+=> #<Vote id: 3, votable_type: "Comment", votable_id: 2, ...etc>
 
 # and
 
