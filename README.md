@@ -131,7 +131,13 @@ And similarly you can `update` and `destroy` the records accordingly.
 
 - GitHub: [@abeidahmed](https://github.com/abeidahmed)
 - Twitter: [@iamhawaabi](https://twitter.com/iamhawaabi)
-- LinkedIn: [Abeid Ahmed](https://www.linkedin.com/in/abeid-ahmed-b21882172/)
+- LinkedIn: [Abeid Ahmed](https://www.linkedin.com/in/abeidahmed/)
+
+### Martin Nyagah
+
+- GitHub: [@menyagah](https://github.com/menyagah)
+- Twitter: [@Martinnyaga20](https://twitter.com/Martinnyaga20)
+- LinkedIn: [Martin Nyagah](https://www.linkedin.com/in/martin-nyagah-a29b8610b/)
 
 ## Contributing
 
